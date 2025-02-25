@@ -81,6 +81,5 @@ export const PanCameraComponent = defineComponent('pan-camera', {
 
         tempMat4.lookAt(this.el.object3D.position, tempV3, UP);
         this.el.object3D.quaternion.setFromRotationMatrix(tempMat4);
-
     }
 });

@@ -29,16 +29,16 @@ export const HandModelComponent = defineComponent('hand-model', {
         // Compute bone offsets in rest pose
         this.handJoints = [];
         this.offsets = HAND_JOINT_NAMES.map(_ => new THREE.Vector3());
-		HAND_JOINT_NAMES.forEach( jointName => {
-		    const bone = model.getObjectByName(jointName)!;
-            if(bone === undefined) {
-				console.warn( `Couldn't find ${jointName} in ${this.data.hand} hand mesh` );
-			}
+        HAND_JOINT_NAMES.forEach(jointName => {
+            const bone = model.getObjectByName(jointName)!;
+            if (bone === undefined) {
+                console.warn(`Couldn't find ${jointName} in ${this.data.hand} hand mesh`);
+            }
 
-			this.handJoints.push(bone as THREE.Object3D);
+            this.handJoints.push(bone as THREE.Object3D);
 
             // Measure offset to parent bone
-            if(jointName !== 'wrist') {
+            if (jointName !== 'wrist') {
                 const parentBone = jointName.endsWith('proximal') ? this.handJoints[0]! : this.handJoints[this.handJoints.length - 2]!;
                 bone.getWorldPosition(this.offsets[this.handJoints.length - 1]);
                 parentBone.worldToLocal(this.offsets[this.handJoints.length - 1]);
