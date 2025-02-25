@@ -9,6 +9,8 @@
 > [!NOTE]
 > This is the source code for the [VR Bloom Effect demo](https://vr-bloom.fern.solutions/). It uses a heavily modified fork of [A-Frame](https://aframe.io), so can't be built in its current form, but can be used as reference.
 
+https://github.com/user-attachments/assets/a8ecc8fc-305c-4b26-9f6a-a853e084ae6c
+
 The actual bloom effect and its source can be found in [`three-vr-postfx`](https://github.com/mrxz/three-vr-postfx/) repository, which is published to NPM as [`@fern-solutions/three-vr-postfx`](https://www.npmjs.com/package/@fern-solutions/three-vr-postfx).
 
 # License
