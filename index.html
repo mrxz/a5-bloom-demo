@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fern Solutions - VR Bloom Effect</title>
+    <meta name="description" content="Example showcasing a VR-optimized bloom effect">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="./src/index.ts" type="module"></script>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <a-scene xr-mode-ui="enabledModes: vr" vr-bloom="radius: 0.6; threshold: 0.1" light="defaultLightsEnabled: false" renderer="toneMapping: ACESFilmic" theatre="src: #theatre-animation">
+      <a-assets>
+        <a-asset-item id="platform" src="./assets/platform.glb"></a-asset-item>
+        <a-asset-item id="left" src="./assets/left.glb"></a-asset-item>
+        <a-asset-item id="right" src="./assets/right.glb"></a-asset-item>
+        <a-asset-item id="reactor" src="./assets/medium_show_room.glb"></a-asset-item>
+        <a-asset-item id="terminal" src="./assets/terminal.glb"></a-asset-item>
+        <a-asset-item id="theatre-animation" src="./assets/Bloom Demo.theatre-project-state.json"></a-asset-item>
+        <a-asset-item id="computer-hum" src="./assets/232935__bmusic92__computer-hum.mp3"></a-asset-item>
+        <a-asset-item id="button-push" src="./assets/635915__earth_cord__button-push.wav"></a-asset-item>
+      </a-assets>
+
+      <!-- Camera rig + controllers -->
+      <a-entity id="rig" position="-0.8 0 -0.8">
+        <a-entity id="leftHand" motion-controller-space="hand: left; space: gripSpace" hand-model="hand: left; model: #left"></a-entity>
+        <a-entity motion-controller-space="hand: left; space: targetRaySpace"></a-entity>
+        <a-entity id="rightHand" motion-controller-space="hand: right; space: gripSpace" hand-model="hand: right; model: #right"></a-entity>
+        <a-entity motion-controller-space="hand: right; space: targetRaySpace"></a-entity>
+        <a-camera pan-camera></a-camera>
+      </a-entity>
+
+      <!-- Lighting -->
+      <a-light type="directional" position="2 4 3"></a-light>
+
+      <!-- Scene -->
+      <a-entity gltf-model="#reactor" phong-material scale="0.01 0.01 0.01" position="0 10 -20" rotation="90 0 0" animatables></a-entity>
+      <a-entity gltf-model="#terminal" phong-material position="-0.2 0 -1.5" rotation="0 180 0">
+        <a-sound src="#computer-hum" autoplay="true" loop="true" volume="0.8"></a-sound>
+      </a-entity>
+      <a-troika-text font-size="0.06" anchor="left" value="SYSTEM> READY?" font="./assets/LispM-Monospace.woff" color="#99FF66" position="-1.3 1.45 -1.61" error-text></a-troika-text>
+      <a-entity gltf-model="#platform" phong-material></a-entity>
+
+      <a-sound id="button-sfx" src="#button-push" positional="false"></a-sound>
+      <a-entity buttons position="-0.95 0.85 -1.15" width="0.5" height="0.1" depth="0.2"></a-entity>
+
+      <!-- Non VR notice -->
+      <div class="overlay">
+        <h1 id="logo">Fern Solutions - VR Bloom Effect</h1>
+        <div id="notice">
+          <div>This bloom effect demo requires a VR headset to experience.</div>
+          <div>
+            <a class="btn btn-meta" href="https://www.oculus.com/open_url/?url=https://vr-bloom.fern.solutions" target="_blank" rel="noopener noreferrer">Open in Quest</a>
+            <a class="btn btn-hmdlink" href="https://hmd.link/https://vr-bloom.fern.solutions" target="_blank" rel="noopener noreferrer">hmd.link</a>
+          </div>
+        </div>
+      </div>
+      <!-- Credits -->
+      <div class="overlay">
+        <span id="credit">Created by <a href="https://noeri.me" target="_blank" rel="noopener noreferrer">Noeri Huisman</a> - <a href="./credits.html">Credits</a></span>
+      </div>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "a5-bloom-demo",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@theatre/studio": "^0.7.2",
+    "@types/bun": "latest",
+    "vite": "^6.2.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@fern-solutions/three-vr-postfx": "^0.1.0",
+    "@theatre/core": "^0.7.2",
+    "afive": "../a5"
+  }
+}
